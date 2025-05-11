@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    <title>Applying Machine Learning Algorithms for the Classification of Sleep Disorders</title>
+    
+    <!-- Bootstrap core CSS -->
+    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="/static/css/fontawesome.css">
+    <link rel="stylesheet" href="/static/css/templatemo-grad-school.css">
+    <link rel="stylesheet" href="/static/css/owl.css">
+    <link rel="stylesheet" href="/static/css/lightbox.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+    {% block extra_style %}
+    {% endblock %}
+  </head>
+
+<body>
+
+   
+  <header class="main-header clearfix" role="header">
+    <div class="logo">
+      <a href="#" style="font-size: 25px;">Classification of <em>Sleep Disorders</em></a>
+    </div>
+    <nav id="menu" class="main-nav" role="navigation">
+      <ul class="main-menu">
+        {% block navbar %}
+          <li class="active"><a href="{{url_for('index')}}">Home</a></li>
+          <li><a href="{{url_for('about')}}">About</a></li>
+          <li><a href="{{url_for('register')}}">Register</a></li>
+          <li><a href="{{url_for('login')}}">Login</a></li>
+        {% endblock %}
+      </ul>
+    </nav>
+  </header>
+
+  {% block content %}
+    <section class="section main-banner" id="top" data-section="section1">
+
+        <img src="/static/images/bg2.jpg" height="100%" width="100%">
+
+        <div class="video-overlay header-text">
+            <div class="caption">
+                <h6 style="margin-top: 50px;">WELCOME!</h6>
+                <h6 style="font-size: 90px;">HypnoDiagnosis</h6>
+                <div class="main-button">
+                  <div class="scroll-to-section" style="display: inline-block; margin-right: 10px;">
+                    <a href="{{url_for('register')}}" style="width: 200px;">Register</a>
+                  </div>
+                  <div class="scroll-to-section" style="display: inline-block;">
+                      <a href="{{url_for('login')}}" style="width: 200px;">Login</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  {% endblock %}
+
+  {% if message %}
+    <script>
+      alert("{{message}}")
+    </script>
+  {% endif %}
+
+  {% block extra_script %}
+  {% endblock %}
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+    <script src="/static/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/static/js/isotope.min.js"></script>
+    <script src="/static/js/owl-carousel.js"></script>
+    <script src="/static/js/lightbox.js"></script>
+    <script src="/static/js/tabs.js"></script>
+    <script src="/static/js/video.js"></script>
+    <script src="/static/js/slick-slider.js"></script>
+    <script src="/static/js/custom.js"></script>
+    <script>
+        //according to loftblog tut
+        $('.nav li:first').addClass('active');
+
+        var showSection = function showSection(section, isAnimate) {
+          var
+          direction = section.replace(/#/, ''),
+          reqSection = $('.section').filter('[data-section="' + direction + '"]'),
+          reqSectionPos = reqSection.offset().top - 0;
+
+          if (isAnimate) {
+            $('body, html').animate({
+              scrollTop: reqSectionPos },
+            800);
+          } else {
+            $('body, html').scrollTop(reqSectionPos);
+          }
+
+        };
+
+        var checkSection = function checkSection() {
+          $('.section').each(function () {
+            var
+            $this = $(this),
+            topEdge = $this.offset().top - 80,
+            bottomEdge = topEdge + $this.height(),
+            wScroll = $(window).scrollTop();
+            if (topEdge < wScroll && bottomEdge > wScroll) {
+              var
+              currentId = $this.data('section'),
+              reqLink = $('a').filter('[href*=\\#' + currentId + ']');
+              reqLink.closest('li').addClass('active').
+              siblings().removeClass('active');
+            }
+          });
+        };
+
+        // $('.main-menu, .scroll-to-section').on('click', 'a', function (e) {
+        //   if($(e.target).hasClass('external')) {
+        //     return;
+        //   }
+        //   e.preventDefault();
+        //   $('#menu').removeClass('active');
+        //   showSection($(this).attr('href'), true);
+        // });
+
+        $(window).scroll(function () {
+          checkSection();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+
+{% block navbar %}
+    <li><a href="{{url_for('index')}}">Home</a></li>
+    <li class="active"><a href="{{url_for('about')}}">About</a></li>
+    <li><a href="{{url_for('register')}}">Register</a></li>
+    <li><a href="{{url_for('login')}}">Login</a></li>
+{% endblock %}
+
+{% block content %}
+    <section class="section why-us" data-section="section2">
+        <div class="container" style="height: 600px;">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id='tabs'>
+                        <section class='tabs-content' style="margin-top: 80px;">
+                            <article id='tabs-1'>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <img src="/static/images/sleep.gif" alt="Sleep Animation" style="margin-top: 100px; width: 100%;">
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4>About</h4>
+                                        <p style="text-align: justify;">
+                                            Sleep disorder classification plays a vital role in enhancing the quality of human life. Conditions such as sleep disorders and sleep apnea can significantly impact overall health. Manual classification of sleep stages by medical experts is time-consuming and susceptible to errors. Therefore, developing accurate machine learning algorithms (MLAs) for detecting and diagnosing sleep disorders is essential. This study compares traditional MLAs with deep learning techniques for classifying sleep disorders. It introduces an optimized approach using the publicly available Sleep Health and Lifestyle Dataset to evaluate model performance. A genetic algorithm is employed to fine-tune the parameters of various ML models, resulting in improved accuracy. 
+                                        </p>
+                                    </div>
+                                </div>
+                            </article>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'index.html' %}
+
+{% block navbar %}
+    <li><a href="{{url_for('index')}}">Home</a></li>
+    <li><a href="{{url_for('about')}}">About</a></li>
+    <li><a href="{{url_for('register')}}">Register</a></li>
+    <li class="active"><a href="{{url_for('login')}}">Login</a></li>
+{% endblock %}
+
+{% block content %}
+<center>
+    <section class="section coming-soon" data-section="section3" style="height: 700px;">
+        <div class="col-5" style="margin-top: 50px;">
+            <form id="contact" action="{{url_for('login')}}" method="post">
+                <center>
+                    <h1 style="color: white;">Login</h1><br>
+                </center>
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <fieldset>
+                            <input name="email" type="email" class="form-control" id="email" placeholder="Email ID" required="">
+                        </fieldset>
+                    </div>
+
+                    <div class="col-md-12">
+                        <fieldset style="position: relative;">
+                            <input name="password" type="password" class="form-control" id="password" placeholder="Password" required="">
+                            <span class="toggle-password" toggle="#password" style="position: absolute; top: 12px; right: 15px; cursor: pointer;">👁️</span>
+                        </fieldset>
+                    </div>
+
+                    <div class="col-md-12">
+                        <fieldset>
+                            <button type="submit" id="form-submit" class="button">Submit</button>
+                        </fieldset>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>            
+</center>
+
+<!-- JavaScript for toggle functionality -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll('.toggle-password').forEach(function(eyeIcon) {
+      eyeIcon.addEventListener('click', function() {
+        const input = document.querySelector(this.getAttribute('toggle'));
+        const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+        input.setAttribute('type', type);
+      });
+    });
+  });
+</script>
+{% endblock %}

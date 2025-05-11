@@ -1,0 +1,12 @@
+Title: Narcolepsy
+Description: Narcolepsy is a chronic neurological disorder that affects the brain's ability to control sleep-wake cycles.
+Symptoms:
+- Excessive daytime sleepiness
+- Sudden loss of muscle tone (cataplexy)
+- Sleep paralysis
+- Hallucinations while falling asleep or waking
+Treatment:
+- Stimulant medications
+- Scheduled naps
+- Antidepressants
+- Lifestyle adjustments to improve alertness

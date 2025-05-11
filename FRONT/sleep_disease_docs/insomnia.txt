@@ -1,0 +1,12 @@
+Title: Insomnia
+Description: Insomnia is a common sleep disorder that makes it hard to fall asleep, stay asleep, or causes early waking and inability to return to sleep.
+Symptoms:
+- Difficulty falling asleep at night
+- Waking up during the night
+- Feeling tired after a night's sleep
+- Irritability and daytime fatigue
+Treatment:
+- Cognitive Behavioral Therapy (CBT-I)
+- Relaxation techniques
+- Prescription medications
+- Avoiding caffeine and screen time before bed

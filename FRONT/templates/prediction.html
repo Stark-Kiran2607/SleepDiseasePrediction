@@ -1,0 +1,142 @@
+{% extends 'index.html' %}
+
+{% block extra_style %}
+<style>
+    .slider-value {
+        color: yellow;
+        position: relative;
+        transform: translateX(-50%);
+        pointer-events: none;
+        z-index: 1;
+    }
+</style>
+{% endblock %}
+
+{% block navbar %}
+<li><a href="{{url_for('home')}}">Home</a></li>
+<li class="active"><a href="{{url_for('prediction')}}">Prediction</a></li>
+<li><a href="{{url_for('index')}}">Logout</a></li>
+{% endblock %}
+
+{% block content %}
+<center>
+<section class="section coming-soon" data-section="section3" style="height: 1400px;">
+    <div class="col-5" style="margin-top: 0px;">
+        <form id="contact" action="{{url_for('prediction')}}" method="post" enctype="multipart/form-data">
+
+            <center>
+                <h1 style="color: white;">Prediction</h1><br>
+                {% if prediction %}
+                    <h3 style="color: rgb(197, 185, 14);">Prediction: {{prediction}}</h3><br>
+                {% endif %}
+            </center>
+
+            <div class="row">
+                
+                <!-- Patient Name Field -->
+                <div class="col-md-12">
+                    <fieldset>
+                        <input type="text" name="Patient_Name" class="form-control" placeholder="Enter Patient Name" required style="color: yellow;">
+                    </fieldset>
+                </div>
+
+                {% if data %}
+                    {% for key in data.keys() %}
+                        <div class="col-md-12">
+                            <fieldset>
+                                <select name="{{ key }}" class="form-control" required style="background-color: rgba(255, 255, 255, 0.13); color: white; border-color: rgba(240, 248, 255, 0);">
+                                    <option selected disabled style="color: white; background-color: black;">Choose {{ key }}</option>
+                                    {% for value in data[key] %}
+                                        <option value="{{ value[0] }}" style="color: black;">{{ value[0] }}</option>
+                                    {% endfor %}
+                                </select><br>
+                            </fieldset>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <div class="col-md-12">
+                    <fieldset>
+                        <input type="number" min="18" max="100" class="form-control" name="Age" placeholder="Age" required style="color: yellow;">
+                    </fieldset>
+                </div>
+
+                <div class="col-md-12">
+                    <fieldset>
+                        <input type="number" min="0" max="24" step="0.1" class="form-control" name="Sleep_Duration" placeholder="Sleep Duration (e.g., 6.5)" required style="color: yellow;">
+                    </fieldset>
+                </div>
+
+                <div class="col-md-12">
+                    <fieldset>
+                        <label style="color: white;">Quality of Sleep (1-10): <span id="qos-value" class="slider-value">5</span></label>
+                        <input type="range" name="Quality_of_Sleep" id="qos" min="0" max="10" value="5" class="form-range">
+                    </fieldset>
+                </div>
+
+                <div class="col-md-12">
+                    <fieldset>
+                        <label style="color: white;">Physical Activity Level (%) : <span id="pal-value" class="slider-value">50</span></label>
+                        <input type="range" name="Physical_Activity_Level" id="pal" min="0" max="100" value="50" class="form-range">
+                    </fieldset>
+                </div>
+
+                <div class="col-md-12">
+                    <fieldset>
+                        <label style="color: white;">Stress Level (1-10): <span id="stress-value" class="slider-value">5</span></label>
+                        <input type="range" name="Stress_Level" id="stress" min="0" max="10" value="5" class="form-range">
+                    </fieldset>
+                </div>
+
+                <div class="col-md-12">
+                    <fieldset>
+                        <input type="number" name="systolic" class="form-control" placeholder="Systolic Blood Pressure" required style="color: yellow;">
+                    </fieldset>
+                </div>
+
+                <div class="col-md-12">
+                    <fieldset>
+                        <input type="number" name="diastolic" class="form-control" placeholder="Diastolic Blood Pressure" required style="color: yellow;">
+                    </fieldset>
+                </div>
+
+                <div class="col-md-12">
+                    <fieldset>
+                        <input type="number" name="Heart_Rate" class="form-control" placeholder="Heart Rate" required style="color: yellow;">
+                    </fieldset>
+                </div>
+
+                <div class="col-md-12">
+                    <fieldset>
+                        <input type="number" name="Daily_Steps" class="form-control" placeholder="Daily Steps" required style="color: yellow;">
+                    </fieldset>
+                </div>
+
+                <div class="col-md-12">
+                    <fieldset>
+                        <button type="submit" id="form-submit" class="button">Submit</button>
+                    </fieldset>
+                </div>
+
+            </div>
+        </form><br><br>
+    </div>
+</section>
+</center>
+{% endblock %}
+
+{% block extra_script %}
+<script>
+    var qos = document.getElementById("qos");
+    var pal = document.getElementById("pal");
+    var stress = document.getElementById("stress");
+
+    var qos_value = document.getElementById("qos-value");
+    var pal_value = document.getElementById("pal-value");
+    var stress_value = document.getElementById("stress-value");
+
+    qos.oninput = function() { qos_value.innerHTML = this.value; }
+    pal.oninput = function() { pal_value.innerHTML = this.value; }
+    stress.oninput = function() { stress_value.innerHTML = this.value; }
+</script>
+{% endblock %}

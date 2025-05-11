@@ -1,0 +1,12 @@
+Title: Sleep Apnea
+Description: Sleep apnea is a potentially serious sleep disorder where breathing repeatedly stops and starts.
+Symptoms:
+- Loud snoring
+- Episodes of stopped breathing during sleep
+- Gasping for air during sleep
+- Morning headache and daytime drowsiness
+Treatment:
+- CPAP (Continuous Positive Airway Pressure) therapy
+- Weight loss and lifestyle changes
+- Surgery (in severe cases)
+- Oral appliances

@@ -1,0 +1,101 @@
+{% extends 'index.html' %}
+
+{% block extra_style %}
+    <style>
+        .table-container {
+            overflow-x: scroll;
+            overflow-y: scroll;
+        }
+    </style>
+{% endblock %}
+
+{% block navbar %}
+  <li class="nav-item">
+    <a class="nav-link" aria-current="page" href="{{url_for('home')}}" style="color: white; margin-left: 400px;">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="{{url_for('load_data')}}" style="color: yellow; padding-left: 30px;">Load</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{url_for('model')}}" style="color: white; padding-left: 30px;">Model</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{url_for('index')}}" style="color: white; padding-left: 30px;">Logout</a>
+  </li>
+{% endblock %}
+
+{% block content %}
+    <center>
+        <section class="section coming-soon" data-section="section3" style="height: 1000px;">
+            <div class="col-5" style="margin-top: 100px;">
+                <form id="contact" action="{{url_for('load')}}" method="post" enctype="multipart/form-data" onsubmit="return validateFile()">
+                    <center>
+                        <h1 style="color: white;">Upload Dataset</h1><br>
+                    </center>
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <fieldset>
+                                <input name="file" type="file" class="form-control" id="file"required="">
+                            </fieldset>
+                        </div>
+
+                        <div class="col-md-12">
+                            <fieldset>
+                                <button type="submit" id="form-submit" class="button">Submit</button>
+                            </fieldset>
+                        </div>
+                    </div>
+                </form><br><br>
+            </div>
+
+            <div style="padding: 50px;">
+                {% if data is not none %}
+                    <h2>Dataset Preview:</h2>
+                    <div class="table-container" style="width: 100%; height: 400px; background-color: white;">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    {% for col in data.columns %}
+                                        <th scope="col" style="padding: 10px;">
+                                            <center>{{ col }}</center>
+                                        </th>
+                                    {% endfor %}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for row in data.values %}
+                                    <tr>
+                                        {% for value in row %}
+                                            <td style="padding: 10px;">
+                                                <center>{{ value }}</center>
+                                            </td>
+                                        {% endfor %}
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+            </div>
+            
+        </section>            
+    </center>
+{% endblock %}
+
+{% block extra_script %}
+    <script>
+      function validateFile() {
+          var fileInput = document.getElementById('file');
+          var filePath = fileInput.value;
+          var allowedExtensions = /(\.xlsx|\.csv|\.xls)$/i;
+
+          if (!allowedExtensions.exec(filePath)) {
+              alert('Please upload file having extensions .xlsx or .csv only.');
+              fileInput.value = '';
+              return false;
+          }
+          return true;
+      }
+    </script>
+{% endblock %}

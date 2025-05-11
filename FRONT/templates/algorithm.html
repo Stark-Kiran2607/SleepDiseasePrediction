@@ -1,0 +1,43 @@
+{% extends 'index.html' %}
+
+{% block navbar %}
+    <li><a href="{{url_for('home')}}">Home</a></li>
+    <li><a href="{{url_for('load')}}">Load</a></li>
+    <li class="active"><a href="{{url_for('algorithm')}}">Algorithm</a></li>
+    <li><a href="{{url_for('prediction')}}">Prediction</a></li>
+    <li><a href="{{url_for('index')}}">Logout</a></li>
+{% endblock %}
+
+{% block content %}
+    <center>
+        <section class="section coming-soon" data-section="section3" style="height: 1000px;">
+            <div class="col-5" style="margin-top: 100px;">
+                <form id="contact" action="{{url_for('algorithm')}}" method="post" enctype="multipart/form-data">
+                    <center>
+                        <h1 style="color: white;">Select Algorithm</h1><br>
+                        {% if accuracy_score %}
+                            <h6 style="color: yellow;">Accuracy Score for {{algorithm}}: {{accuracy_score}} %</h6><br>
+                        {% endif %}
+                    </center>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <fieldset>
+                                <select name="algorithm" class="form-control" required="">
+                                    <option selected disabled>Choose Algorithm</option>
+                                    <option value="stacking_classifier">Stacking Classifier</option>
+                                    <option value="voting_classifier">Voting Classifier </option>
+                                </select>
+                            </fieldset>
+                        </div>
+
+                        <div class="col-md-12">
+                            <fieldset>
+                                <button type="submit" id="form-submit" class="button">Submit</button>
+                            </fieldset>
+                        </div>
+                    </div>
+                </form><br><br>
+            </div>
+        </section>            
+    </center>
+{% endblock %}
