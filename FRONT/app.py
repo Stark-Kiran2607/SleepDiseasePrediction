@@ -13,9 +13,9 @@ app.secret_key = 'admin'
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="Kiran@123",
+    password="",
     port="3306",
-    database="sleep_db"
+    database=""
 )
 mycursor = mydb.cursor()
 
